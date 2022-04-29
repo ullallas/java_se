@@ -1,0 +1,103 @@
+package array_1;
+
+import java.io.IOException;
+import java.util.Scanner;
+
+public class Baseball {
+
+	public static void main(String[] args) throws IOException {
+		Scanner scan = new Scanner(System.in);
+		
+		int[] ar = new int[3];
+		int i;
+		
+		for(i=0; i<ar.length; i++) {
+			ar[i] = (int)(Math.random() * 9) + 1; //1~9 난수생성
+			System.out.print(ar[i]); //난수확인
+			
+			for(int j=0; j<i; j++) {
+				if(ar[i] == ar[j]) {
+					i--; 
+					break;
+				} //if
+			} //for j
+		} //for i
+		
+		while(true) {
+			System.out.print("게임을 실행하시겠습니까(Y/N) : ");
+			int yn = System.in.read();
+			if (yn == 'Y' || yn == 'y') {
+				System.out.println();
+				System.out.println("게임을 시작합니다");
+				break;
+			} else continue;
+				
+			System.out.print("숫자 입력 : ");
+			int user = scan.nextInt();
+		
+			int hundred = user/100;
+			int ten = (user%100)/10;
+			int one = user%10;
+			int strike = 0;
+			int ball = 0;
+			
+				if(ar[0] == hundred) {
+					strike++;
+					System.out.println(strike + "스트라이크 " + ball + "볼");
+				} else if(ar[0] == ten || ar[0] == one) {
+					ball++;
+					System.out.println(strike + "스트라이크 " + ball + "볼");
+				}
+				if(ar[1] == ten) {
+					strike++;
+					System.out.println(strike + "스트라이크 " + ball + "볼");
+				} else if(ar[1] == ten || ar[1] == one) {
+					ball++;
+					System.out.println(strike + "스트라이크 " + ball + "볼");
+				}
+				if(ar[2] == one) strike++; {
+				strike++;
+				System.out.println(strike + "스트라이크 " + ball + "볼");
+				} else if(ar[2] == ten || ar[2] == one) {
+					ball++;
+					System.out.println(strike + "스트라이크 " + ball + "볼");
+				}
+				
+				
+		
+		} //while
+		
+//		System.out.println();
+//		System.out.println("축하합니다 " + count + "번 만에 맞추셨습니다");
+	
+	} //main
+
+}
+
+
+/*
+야구 게임 - 숫자 맞추기 게임 (while, for, if)
+- 크기가 3개인 정수형 배열을 잡고 1~9사이의 난수를 발생한다
+- 난수는 중복을 허용하지 않는다
+
+[실행결과]
+게임을 실행하시겠습니까(Y/N) : w
+게임을 실행하시겠습니까(Y/N) : q
+게임을 실행하시겠습니까(Y/N) : y
+
+게임을 시작합니다
+
+(while)
+숫자입력 : 123
+1스트라이크 0볼
+
+숫자입력 : 182
+0스트라이크 2볼
+
+...
+
+숫자입력 : 428
+3스트라이크 0볼
+
+축하합니다...몇x번만에 맞추셨습니다.
+*/
